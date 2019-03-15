@@ -19,7 +19,7 @@ class DelegatedLoanContract:
     def __setattr__(self, key, value):
         setattr(self._contract, key, value)
 
-    def __iadd__(self, other):
+    def __add__(self, other):
         self._contract += other
         return self
 
