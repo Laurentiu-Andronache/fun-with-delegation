@@ -1,11 +1,11 @@
 from writers import ContractsWriter
 
 
-# class LoanContract(ContractsWriter):
-#
-#     def __init__(self, signee_1, signee_2):
-#         contract_type = 'loan'
-#         super().__init__(signee_1, signee_2, contract_type)
+class LoanContract(ContractsWriter):
+
+    def __init__(self, signee_1, signee_2):
+        contract_type = 'loan'
+        super().__init__(signee_1, signee_2, contract_type)
 
 
 class DelegatedLoanContract:
@@ -18,6 +18,17 @@ class DelegatedLoanContract:
 
     def __setattr__(self, key, value):
         setattr(self._contract, key, value)
+
+    def __iadd__(self, other):
+        self._contract += other
+        return self
+
+    def __str__(self):
+        return str(self._contract)
+
+    def __repr__(self):
+        return repr(self._contract)
+
 
 
 if __name__ == '__main__':
