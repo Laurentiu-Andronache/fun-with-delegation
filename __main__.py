@@ -10,29 +10,13 @@ from writers import ContractsWriter
 
 class DelegatedLoanContract:
     def __init__(self, *args, **kwargs):
-        """
-        Args:
-            *args:
-            **kwargs:
-        """
         self.__dict__['_contract'] = ContractsWriter(*args, **kwargs)
         self._contract.header = 'loan'
 
     def __getattr__(self, item):
-        """
-        Args:
-            item:
-        """
         return getattr(self._contract, item)
 
     def __setattr__(self, key, value):
-        # if ('_contract' in key:
-        # self._contract.__dict__[key] = value
-        """
-        Args:
-            key:
-            value:
-        """
         setattr(self._contract, key, value)
 
 
